@@ -1,8 +1,10 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Image from "../components/image"
+import logo from "../images/4T Knox Secure black transparent background-07.png"
 
-const Header = ({ siteTitle }) => (
+const Header = (props, { siteTitle }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -27,6 +29,12 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <div style={{ float: `right` }}>
+        {/* <Image props="{Image.}"  /> */}
+        <img
+          src={logo} alt="Logo"
+        />
+      </div>
     </div>
   </header>
 )
@@ -40,3 +48,32 @@ Header.defaultProps = {
 }
 
 export default Header
+
+
+export const pageQuery = graphql`
+
+query {
+  imageOne: file(relativePath: { eq: "4T Knox Secure black transparent background-07.png" }) {
+    childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  imageTwo: file(relativePath: { eq: "two.jpg" }) {
+    childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  imageThree: file(relativePath: { eq: "three.jpg" }) {
+    childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}
+
+`
